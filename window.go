@@ -32,12 +32,16 @@ func (window Window) Destroy() {
 	C.glfwDestroyWindow(window.toC())
 }
 
-func (window Window) ShouldClose() int {
-	return (int)(C.glfwWindowShouldClose(window.toC()))
+func (window Window) ShouldClose() bool {
+	return (int)(C.glfwWindowShouldClose(window.toC())) != 0
 }
 
-func (window Window) SetShouldClose(value int) {
-	C.glfwSetWindowShouldClose(window.toC(), C.int(value))
+func (window Window) SetShouldClose(value bool) {
+	if value {
+		C.glfwSetWindowShouldClose(window.toC(), C.int(1))
+	} else {
+		C.glfwSetWindowShouldClose(window.toC(), C.int(0))
+	}
 }
 
 func (window Window) SetTitle(title string) {

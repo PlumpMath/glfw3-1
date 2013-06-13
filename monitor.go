@@ -34,3 +34,36 @@ func Cmonitor(monitor *Monitor) (cmonitor *C.GLFWmonitor) {
 //GetVideoModes
 //GetVideoMode
 
+
+/*
+
+/*
+func VideoModes(max int) []*VidMode {
+	var vm C.GLFWvidmode
+
+	size := int(unsafe.Sizeof(vm))
+	ptr := (*C.GLFWvidmode)(C.malloc(C.size_t(size * max)))
+	defer C.free(unsafe.Pointer(ptr))
+	count := C.glfwGetVideoModes(ptr, C.int(max))
+
+	if count == 0 {
+		return nil
+	}
+
+	list := make([]*VidMode, count)
+	for i := range list {
+		p := (*C.GLFWvidmode)(unsafe.Pointer(uintptr(unsafe.Pointer(ptr)) + uintptr(i*size)))
+		list[i] = vidModeFromPtr(p)
+	}
+
+	return list
+}
+
+func DesktopMode() *VidMode {
+	var vm C.GLFWvidmode
+	C.glfwGetVideoMode(&vm)
+	return vidModeFromPtr(&vm)
+}
+*/
+
+*/
