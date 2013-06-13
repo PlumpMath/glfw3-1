@@ -12,6 +12,7 @@ Missing functions:
 * SetUserPointer and GetUserPointer
 * SetGamma, GetGammaRamp and SetGammaRamp
 * GetWindowAttrib
+* GetFramebufferSize
 
 ### Info
 
