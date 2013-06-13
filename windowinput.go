@@ -6,10 +6,6 @@ package glfw3
 //#endif
 //#include <GL/glfw3.h>
 import "C"
-import "log"
-/*import (
-	"unsafe"
-)*/
 
 
 func (window Window) GetInputMode(mode int) int {
