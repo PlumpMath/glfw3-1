@@ -140,3 +140,16 @@ func WaitEvents() {
 }
 
 
+
+type ErrorCallback func (int, string)
+var errorCallback ErrorCallback
+func SetErrorCallback(callback ErrorCallback) {
+	errorCallback = callback
+}
+//export goErrorCallback
+func goErrorCallback(err C.int, description *C.char) {
+	if errorCallback != nil {
+		errorCallback((int)(err), C.GoString(description))
+	}
+}
+
