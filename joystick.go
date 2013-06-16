@@ -4,7 +4,7 @@ package glfw3
 //#ifdef _WIN32
 //  #define GLFW_DLL
 //#endif
-//#include <GL/glfw3.h>
+//#include <GLFW/glfw3.h>
 import "C"
 import (
 	"fmt"

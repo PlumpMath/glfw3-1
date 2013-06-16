@@ -3,13 +3,13 @@ package glfw3
 //#cgo   linux  CFLAGS: -I/usr/local/include -pthread
 //#cgo   linux LDFLAGS: -L/usr/local/lib -pthread -lX11 -lXrandr -lm -lGL -lrt -lglfw
 //#cgo  darwin  CFLAGS: -I/usr/local/include
-//#cgo  darwin LDFLAGS: -L/usr/local/lib -framework Cocoa -framework OpenGL -framework IOKit -lglfw
+//#cgo  darwin LDFLAGS: -L/usr/local/lib -framework Cocoa -framework OpenGL -framework IOKit -lglfw3
 //#cgo windows LDFLAGS: -lglu32 -lopengl32 -lglfwdll
 //#include <stdlib.h>
 //#ifdef _WIN32
 //  #define GLFW_DLL
 //#endif
-//#include <GL/glfw3.h>
+//#include <GLFW/glfw3.h>
 import "C"
 import (
 	"errors"
