@@ -13,6 +13,7 @@ Missing functions:
 * SetGamma, GetGammaRamp and SetGammaRamp
 * GetWindowAttrib
 * GetFramebufferSize
+* SetFramebufferSizeCallback
 
 Most of the callbacks are missing as well as most of the monitor and joystick stuff.
 

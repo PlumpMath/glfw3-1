@@ -13,7 +13,14 @@ import (
 
 type Window struct {
 	pointer unsafe.Pointer
+
 	posCallback *PosCallback
+	sizeCallback *SizeCallback
+	closeCallback *EventCallback
+	refreshCallback *EventCallback
+	focusCallback *StatusCallback
+	iconifyCallback *StatusCallback
+
 }
 
 func (window Window) toC() (*C.GLFWwindow) {
