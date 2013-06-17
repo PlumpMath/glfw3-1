@@ -141,8 +141,6 @@ func WaitEvents() {
 }
 
 
-
-type ErrorCallback func (int, string)
 var errorCallback ErrorCallback
 func SetErrorCallback(callback ErrorCallback) {
 	errorCallback = callback

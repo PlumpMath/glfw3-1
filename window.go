@@ -21,6 +21,7 @@ type Window struct {
 	focusCallback *StatusCallback
 	iconifyCallback *StatusCallback
 
+	cursorEnterCallback *StatusCallback
 }
 
 func (window Window) toC() (*C.GLFWwindow) {

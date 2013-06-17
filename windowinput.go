@@ -5,7 +5,9 @@ package glfw3
 //  #define GLFW_DLL
 //#endif
 //#include <GLFW/glfw3.h>
+//#include "callback.h"
 import "C"
+import "unsafe"
 
 
 func (window Window) GetInputMode(mode int) int {
@@ -35,10 +37,24 @@ func (window Window) SetCursorPos(xpos, ypos float64) {
 }
 
 
-//SetKeyCallback
-//SetCharCallback
-//SetMouseButtonCallback
-//SetCursorPosCallback
-//SetCursorEnterCallback
-//SetScrollCallback
+
+
+func (w *Window) SetCursorEnterCallback(callback StatusCallback) {
+	w.cursorEnterCallback = &callback
+	C.cSetCursorEnterCallback(w.pointer)
+}
+
+//export goCursorEnterCallback
+func goCursorEnterCallback(window unsafe.Pointer, entered int) {
+	callback := getGoWindow(unsafe.Pointer(window)).cursorEnterCallback
+	if (callback != nil) {
+		(*callback)(entered != 0)
+	}
+}
+
+//TODO SetKeyCallback
+//TODO SetCharCallback
+//TODO SetMouseButtonCallback
+//TODO SetCursorPosCallback
+//TODO SetScrollCallback
 
