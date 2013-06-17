@@ -13,6 +13,7 @@ import (
 
 type Window struct {
 	pointer unsafe.Pointer
+	posCallback *PosCallback
 }
 
 func (window Window) toC() (*C.GLFWwindow) {
@@ -22,6 +23,18 @@ func (window Window) toC() (*C.GLFWwindow) {
 func Cwindow(window *Window) (cwindow *C.GLFWwindow) {
 	if (window != nil) {
 		cwindow = window.toC()
+	}
+	return
+}
+
+var cWindowMap map[unsafe.Pointer]*Window = make(map[unsafe.Pointer]*Window)
+
+func getGoWindow(cwindow unsafe.Pointer) (window *Window) {
+	window, ok := cWindowMap[cwindow]
+	if !ok {
+		window = new(Window)
+		window.pointer = cwindow
+		cWindowMap[cwindow] = window
 	}
 	return
 }

@@ -10,6 +10,7 @@ package glfw3
 //  #define GLFW_DLL
 //#endif
 //#include <GLFW/glfw3.h>
+//#include "callback.h"
 import "C"
 import (
 	"errors"
@@ -36,7 +37,7 @@ func CreateWindow(width int, height int, title string, monitor *Monitor, share *
 		Cmonitor(monitor), Cwindow(share)))
 
 	if (windowPointer != nil) {
-		window = &Window{windowPointer}
+		window = getGoWindow(windowPointer)
 	} else {
 		err = errors.New("Failed to open window")
 	}
@@ -107,7 +108,7 @@ func GetCurrentContext() (window *Window, err error) {
 	windowPointer := (unsafe.Pointer)(C.glfwGetCurrentContext())
 
 	if (windowPointer != nil) {
-		window = &Window{windowPointer}
+		window = getGoWindow(windowPointer)
 	} else {
 		err = errors.New("No window's context is current")
 	}
@@ -145,6 +146,7 @@ type ErrorCallback func (int, string)
 var errorCallback ErrorCallback
 func SetErrorCallback(callback ErrorCallback) {
 	errorCallback = callback
+	C.cSetErrorCallback()
 }
 //export goErrorCallback
 func goErrorCallback(err C.int, description *C.char) {
