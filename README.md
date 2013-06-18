@@ -14,8 +14,7 @@ Missing functions:
 * GetWindowAttrib
 * GetFramebufferSize
 * SetFramebufferSizeCallback
-
-Most of the callbacks are missing as well as most of the monitor and joystick stuff.
+* Monitor and Joystick stuff
 
 ### Info
 
