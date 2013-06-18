@@ -15,6 +15,11 @@ extern void goFocusCallback(void* window, int focused);
 extern void goIconifyCallback(void* window, int iconified);
 //extern void goFramebufferSizeCallback(void* window, int width, int height);
 extern void goCursorEnterCallback(void* window, int entered);
+extern void goKeyCallback(void* window, int key, int action);
+extern void goCharCallback(void* window, int character);
+extern void goMouseButtonCallback(void* window, int button, int action);
+extern void goCursorPosCallback(void* window, int posX, int posY);
+extern void goScrollCallback(void* window, int offsetX, int offsetY);
 
 
 //***********************************************
@@ -49,6 +54,21 @@ void cFramebufferSizeCallback(GLFWwindow* window, int width, int height) {
 */
 void cCursorEnterCallback(GLFWwindow* window, int entered) {
 	goCursorEnterCallback(window, entered);
+}
+void cKeyCallback(GLFWwindow* window, int key, int action) {
+	goKeyCallback(window, key, action);
+}
+void cCharCallback(GLFWwindow* window, unsigned int character) {
+	goCharCallback(window, character);
+}
+void cMouseButtonCallback(GLFWwindow* window, int button, int action) {
+	goMouseButtonCallback(window, button, action);
+}
+void cCursorPosCallback(GLFWwindow* window, double posX, double posY) {
+	goCursorPosCallback(window, posX, posY);
+}
+void cScrollCallback(GLFWwindow* window, double offsetX, double offsetY) {
+	goScrollCallback(window, offsetX, offsetY);
 }
 
 
@@ -85,3 +105,19 @@ void cSetFramebufferSizeCallback(void* window) {
 void cSetCursorEnterCallback(void* window) {
 	glfwSetCursorEnterCallback((GLFWwindow*)window, cCursorEnterCallback);
 }
+void cSetKeyCallback(void* window) {
+	glfwSetKeyCallback((GLFWwindow*)window, cKeyCallback);
+}
+void cSetCharCallback(void* window) {
+	glfwSetCharCallback((GLFWwindow*)window, cCharCallback);
+}
+void cSetMouseButtonCallback(void* window) {
+	glfwSetMouseButtonCallback((GLFWwindow*)window, cMouseButtonCallback);
+}
+void cSetCursorPosCallback(void* window) {
+	glfwSetCursorPosCallback((GLFWwindow*)window, cCursorPosCallback);
+}
+void cSetScrollCallback(void* window) {
+	glfwSetScrollCallback((GLFWwindow*)window, cScrollCallback);
+}
+

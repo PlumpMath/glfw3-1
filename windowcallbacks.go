@@ -11,11 +11,11 @@ import (
 	"unsafe"
 )
 
-func (w *Window) SetPosCallback(callback PosCallback) {
+func (w *Window) SetPosCallback(callback IntPosCallback) {
 	w.posCallback = &callback
 	C.cSetPosCallback(w.pointer)
 }
-func (w *Window) SetSizeCallback(callback SizeCallback) {
+func (w *Window) SetSizeCallback(callback IntPosCallback) {
 	w.sizeCallback = &callback
 	C.cSetSizeCallback(w.pointer)
 }
